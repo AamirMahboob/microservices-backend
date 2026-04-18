@@ -23,4 +23,22 @@ app.use("/product", createProxyMiddleware({
     // }
   }));
 
+  app.use("/order", createProxyMiddleware({
+    target: "http://localhost:6000",
+    changeOrigin: true,
+    pathRewrite: {
+      "^/order": ""
+    }
+  }));
+  
+  
+  // 🏬 INVENTORY SERVICE
+  app.use("/inventory", createProxyMiddleware({
+    target: "http://localhost:7000",
+    changeOrigin: true,
+    pathRewrite: {
+      "^/inventory": ""
+    }
+  }));
+
 app.listen(3000, () => console.log("API Gateway running on 3000"));

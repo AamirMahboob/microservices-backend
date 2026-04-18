@@ -19,7 +19,9 @@ const User = mongoose.model("User", {
 
 // Signup
 app.post("/signup", async (req, res) => {
+  console.log("SIGNUP HIT")
   const user = await User.create(req.body);
+  console.log("USER CREATED:", user);
   res.json(user);
 });
 
@@ -27,7 +29,9 @@ app.post("/signup", async (req, res) => {
 const jwt = require("jsonwebtoken");
 
 app.post("/login", async (req, res) => {
+  console.log("LOGIN HIT");
   const user = await User.findOne(req.body);
+  console.log("USER FOUND:", user);
 
   if (!user) return res.status(401).json({ msg: "Invalid" });
 
