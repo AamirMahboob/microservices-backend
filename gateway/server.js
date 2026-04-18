@@ -16,11 +16,11 @@ app.use("/auth", createProxyMiddleware({
 
 // Product routes
 app.use("/product", createProxyMiddleware({
-  target: "http://localhost:5000",
-  changeOrigin: true,
-  pathRewrite: {
-    "^/product": ""
-  }
-}));
+    target: "http://localhost:5000",
+    changeOrigin: true,
+    // pathRewrite: {
+    //   "^/product": ""   // only this line
+    // }
+  }));
 
 app.listen(3000, () => console.log("API Gateway running on 3000"));
